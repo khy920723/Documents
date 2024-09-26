@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Convenience/자주 쓰는 단축키.md",
+                "file": "Miscellany/IT 기기 관련 스펙.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Convenience/자주 쓰는 단축키.md",
+                "file": "Miscellany/IT 기기 관련 스펙.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Convenience/자주 쓰는 단축키.md",
+                "file": "Miscellany/IT 기기 관련 스펙.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Convenience/자주 쓰는 단축키.md"
+                "file": "Miscellany/IT 기기 관련 스펙.md"
               }
             }
           }
@@ -148,13 +148,15 @@
   },
   "active": "093e36c16994537b",
   "lastOpenFiles": [
+    "Convenience/자주 쓰는 단축키.md",
+    "Miscellany/IT 기기 관련 스펙.md",
+    "Miscellany",
     "Concept/오류 해결.md",
     "Convenience/유용한 Third party app & Development tools.md",
     "Convenience/readme.md",
     "MacOS - Intel CPU.md",
     "MacOS - Intel CPU.md 12.47.05",
     "Concept/정보처리기사 - 실기.md",
-    "Convenience/자주 쓰는 단축키.md",
     "유용한 Third party app & Development tools.md",
     "README.md",
     "Convenience",
