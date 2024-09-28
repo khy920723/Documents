@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Miscellany/IT 기기 관련 스펙.md",
+                "file": "Convenience/유용한 Third party app & Development tools.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Miscellany/IT 기기 관련 스펙.md",
+                "file": "Convenience/유용한 Third party app & Development tools.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Miscellany/IT 기기 관련 스펙.md",
+                "file": "Convenience/유용한 Third party app & Development tools.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Miscellany/IT 기기 관련 스펙.md"
+                "file": "Convenience/유용한 Third party app & Development tools.md"
               }
             }
           }
@@ -148,8 +148,8 @@
   },
   "active": "093e36c16994537b",
   "lastOpenFiles": [
-    "Convenience/자주 쓰는 단축키.md",
     "Miscellany/IT 기기 관련 스펙.md",
+    "Convenience/자주 쓰는 단축키.md",
     "Miscellany",
     "Concept/오류 해결.md",
     "Convenience/유용한 Third party app & Development tools.md",
