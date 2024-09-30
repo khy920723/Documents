@@ -63,17 +63,21 @@
 
 **display notification** "Battery 30% less. (" & lessNoticnt & ")" with title "Battery Charge Boundary"
 
-# if percentge less than 30% (without charging status)
+# if percentge 30% over becuase of charging
 
 **else** **if** percentLeft > 30 **and** chargeState **contains** "charging" **then**
 
 **set** lessNoticnt **to** 0
+
+# if percentge more than 70% (without charging status)
 
 **else** **if** percentLeft ≥ 70 **and** MoreNoticnt ≤ 3 **then**
 
 **set** MoreNoticnt **to** (MoreNoticnt + 1)
 
 **display notification** "Battery 70% more." with title "Battery Charge Boundary"
+
+# if percentge 70% under becuase of uncharging
 
 **else** **if** percentLeft < 70 **and** chargeState **contains** "discharging" **then**
 
@@ -87,5 +91,4 @@
 
 **end** **repeat**
 ```
-
 

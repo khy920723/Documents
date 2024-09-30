@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Concept/macOS setting.md",
+                "file": "Convenience/macOS setting.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Concept/macOS setting.md",
+                "file": "Convenience/macOS setting.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Concept/macOS setting.md",
+                "file": "Convenience/macOS setting.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Concept/macOS setting.md"
+                "file": "Convenience/macOS setting.md"
               }
             }
           }
@@ -146,10 +146,10 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "093e36c16994537b",
+  "active": "df96092bab6802bd",
   "lastOpenFiles": [
     "Concept/오류 해결.md",
-    "Concept/macOS setting.md",
+    "Convenience/macOS setting.md",
     "무제 폴더",
     "Convenience/유용한 Third party app & Development tools.md",
     "Miscellany/IT 기기 관련 스펙.md",
