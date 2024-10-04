@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Convenience/macOS setting.md",
+                "file": "Convenience/유용한 Third party app & Development tools.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Convenience/macOS setting.md",
+                "file": "Convenience/유용한 Third party app & Development tools.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Convenience/macOS setting.md",
+                "file": "Convenience/유용한 Third party app & Development tools.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Convenience/macOS setting.md"
+                "file": "Convenience/유용한 Third party app & Development tools.md"
               }
             }
           }
@@ -146,10 +146,11 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "df96092bab6802bd",
+  "active": "093e36c16994537b",
   "lastOpenFiles": [
-    "Concept/오류 해결.md",
     "Convenience/macOS setting.md",
+    "BatteryAlram-KHY.scpt",
+    "Concept/오류 해결.md",
     "무제 폴더",
     "Convenience/유용한 Third party app & Development tools.md",
     "Miscellany/IT 기기 관련 스펙.md",
