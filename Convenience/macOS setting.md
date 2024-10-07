@@ -1,3 +1,27 @@
+# 배터리 충전 제한
+---
+- .plist
+```xml
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">  
+<plist version="1.0">  
+<dict>  
+    <key>Label</key>  
+    <string>battery-status-monitor.job</string>  
+    <key>ProgramArguments</key>  
+    <array>  
+        <!-- modify your oascript app location -->  
+        <string>/usr/bin/osascript</string>  
+        <!-- modify your BatteryAlram location -->  
+        <string>/Users/mac/Applications/BatteryOverseer/Battery-Overseer.scpt</string>  
+    </array>  
+    <key>RunAtLoad</key>  
+    <true/>  
+</dict>  
+</plist>
+```
+
+- .scpt
 ``` applescript
 # custom code
 

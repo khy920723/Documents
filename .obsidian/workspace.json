@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Convenience/유용한 Third party app & Development tools.md",
+                "file": "Concept/정보처리기사 - 실기.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "4abec85f1b78cf10",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Convenience/유용한 Third party app & Development tools.md",
+                "file": "Concept/정보처리기사 - 실기.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Convenience/유용한 Third party app & Development tools.md",
+                "file": "Concept/정보처리기사 - 실기.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Convenience/유용한 Third party app & Development tools.md"
+                "file": "Concept/정보처리기사 - 실기.md"
               }
             }
           }
@@ -149,10 +149,10 @@
   "active": "093e36c16994537b",
   "lastOpenFiles": [
     "Convenience/macOS setting.md",
+    "Convenience/유용한 Third party app & Development tools.md",
     "BatteryAlram-KHY.scpt",
     "Concept/오류 해결.md",
     "무제 폴더",
-    "Convenience/유용한 Third party app & Development tools.md",
     "Miscellany/IT 기기 관련 스펙.md",
     "Convenience/자주 쓰는 단축키.md",
     "Miscellany",
