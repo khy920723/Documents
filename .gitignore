@@ -11,3 +11,11 @@
 */.space
 .space
 .space/*
+
+*/.DS_Store
+.DS_Store
+.DS_Store/*
+
+*/.gitignore
+.gitignore
+.gitignore/*
