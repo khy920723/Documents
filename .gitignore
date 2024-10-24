@@ -1,0 +1,6 @@
+# For ignoring git upload
+# Add path
+*/.makemd
+*/.obsidian
+*/.space
+
