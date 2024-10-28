@@ -1,0 +1,496 @@
+포트설정까지 했으니 ssh 설정 시작할겁니다.
+
+key 를 공유하면 password 없이 접근 가능하다.
+
+id password 없이 key 인증으로 바로 접속 가능
+
+key 인증하는법 배워봅시다.
+
+
+1. key 생성
+namenode 입장에서 생성하기
+
+커맨드창에서
+
+ssh-keygen -t rsa 입력
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/jun/.ssh/id_rsa):
+
+그냥 엔터
+
+password 를 따로 생성할건지 물어보지만 우리는 필요없음
+
+엔터
+
+엔터
+
+Your identification has been saved in /home/jun/.ssh/id_rsa.      <- 개인키 id_rsa.
+Your public key has been saved in /home/jun/.ssh/id_rsa.pub.    <- 공유키 id_ras.pub.
+
+
+The key fingerprint is:
+SHA256:QkH9DqbEP9cfGlwCDDYgefUveV8UKY+i7X4qaMWE5Tw jun@hadoopnode01
+
+
+
+ls -al .ssh
+
+drwx------.  2 jun jun   38  8월 19 09:10 .
+drwx------. 18 jun jun 4096  8월 19 09:09 ..
+-rw-------.  1 jun jun 1679  8월 19 09:10 id_rsa   <- 개인키
+-rw-r--r--.  1 jun jun  398  8월 19 09:10 id_rsa.pub  <- 공개키
+
+
+내가 만든 키를 하둡2 에 보내보자
+** 우리는 한 컴퓨터에서 진행하지만, 다른 컴퓨터에 이걸 보낸다고 생각하면 됨
+
+ssh-copy-id -i /home/jun/.ssh/id_rsa.pub jun@hadoopnode02
+
+are you sure 나오면 yes 입력
+
+password 처음꺼 연결시켜 주고 (1234)
+
+그 다음부터는 password 없이 연결 가능하다.
+
+** 커맨드에는 hadoopnode01 이 나오는데, 같은 컴퓨터에서 접속했기 때문에 01로 나오는 것.
+
+실제로는 02로 접속했다고 봐야한다. (한컴퓨터이기 때문에 03 04 역시 이미 적용이 되어있음)
+but 만약 여러대 컴퓨터가 있다면 각 컴퓨터마다 다시 같은 방법으로 해줘야 한다.
+
+
+서버를 전부 다 연결시켜 주기 위해서는
+방금 namenode 를 통해 datanode 에 준것처럼
+datanode 기준으로 keygen 을 해서 연결해줘야 한다.
+
+## namenode 에서만 보낸다면 안해도 되지만, 상호적으로 구동하기 위해선 각 기준으로 연결해줘야 한다.
+
+
+
+
+
+ls -l 에 받아둔 tar 파일 풀어주기
+tar zxvf hadoop-2.7.2.tar.gz
+
+
+ln -s hadoop-2.7.2 hadoop
+
+hadoop 으로 심볼릭 파일을 만들어서 이름을 간단하게 만들어주자
+
+이제 환경설정 해주기
+
+hadoop 에서 etx 들어가서 다시 hadoop 파일 들어가면 관련 파일들이 전부 나온다.
+
+hadoop 폴더에서
+vi etc/hadoop/hadoop-env.sh 입력
+
+putty 로 새로운 커맨드 하나 더 띄워서 
+
+cd hadoop
+
+mkdir pids
+
+pwd
+
+/home/jun/hadoop/pids  <- pwd 로 나온 경로를 복사해서
+
+
+vi etc/hadoop/hadoop-env.sh 들어가서 보이는 코드 99,44 위치로 가면
+
+export HADOOP_PID_DIR 찾아서 
+
+export HADOOP_PID_DIR=/home/jun/hadoop/pids 바꿔주기
+
+:wq 로 저장하고 나오기
+
+
+
+vi masters 파일 하나 만들어준다. 세컨더리 네임노드의 호스트명 기술해주는 곳 
+namenode 와 secondary 는 한대씩 datanode는 여러대 가능
+ 
+** 우리는 한대로 하니까 그 안에 hadoopnode01 라고 적어놓는다.
+
+저장하고 나오기
+
+mv masters etc/hadoop <- 하둡안에 마스터즈 만든 파일 넣어두기
+
+vi etc/hadoop/slaves <- 데이터노드의 호스트명을 전부 넣어주기
+** 우리는 한대만 쓰니까 hadoopnode01 만 적어주면 되지만
+만약 100대를 사용한다면 100대 이름 전부를 넣어줘야함
+
+저장 하고 나오기
+
+
+참고 **
+
+se paste 적용하면, 자동 인덴테이션을 막아주기 때문에 무언가 붙여서 다시 정리할 필요가 없어짐
+se nopaste 로 원래상태 가능
+
+****
+
+임시파일이 쌓이게 되는 하둡 파일 시스템의 접근 경로 만들기
+cd 로 원래 hadoopnode01 로 나간다음에
+
+mkdir hdfs-data
+mkdir hdfs-data/hadoop
+mkdir hdfs-data/hadoop/tmp
+
+이렇게 3개의 디렉토리를 만들어두고
+
+
+vi etc/hadoop/core-site.xml  <-입력해서 들어가기
+
+안에서 
+
+<configuration>
+</configuration>
+찾아서 그 사이에 코드 넣어주기
+
+
+<configuration>
+<property>
+    <name>fs.defaultFS</name>
+    <value>hdfs://hadoopnode01:9000</value>
+</property>
+<property>
+    <name>hadoop.tmp.dir</name>
+    <value>/home/jun/hdfs-data/hadoop/tmp</value>
+</property>
+</configuration>
+
+작업하면서 임시로 만들어졌다가 만들고나서 삭제하는 파일들을 넣어두는 곳을 따로 지정함
+물리적으로 디렉토리들을 나눠서 만들어주면, 각 node 들 에서 만들어지는 임시파일들이
+나눠진 디렉토리로 들어가게 된다.
+
+
+
+리눅스 root 파일 밑에 들어가는 임시파일은 모든 것들이 몰리기 때문에
+혹시라도 나중에 문제가 생겨 각 임시파일을 확인하고자 할때 분류되어 있는 파일들을 잘 확인하기 위해.
+
+
+
+tmp 밑으로 계속 각 파일을 만들어두면 각 임시파일들이 가게 될 경로를 저장할 수 있다.
+
+다음
+
+vi etc/hadoop/hdfs-site.xml <-입력		
+
+<configuration>
+    <property>
+        <name>dfs.replication</name>		<<- 전체 코드가 namenode 에서 사용
+        <value>1<value>			<<- datanode 개수를 넣는다. 우리는 컴퓨터 1대라서 1만 적음
+    </property>
+    <property>
+        <name>dfs.namenode.checkpoint.dir</name>			<<- secondary 에서 사용
+        <value>/home/jun/hdfs-data/hadoop/data/name-secondary</value>	<-새롭게 디렉토리 만들어줘야함
+    </property>								secondary 디렉토리가 checkpoint 작업할때 저장되는 디렉토리
+    <property>										정해진 시간간격으로 namenode 의 데이터들을 저장한다.
+        <name>dfs.http.address</name>  	 <- namenode 주소
+        <value>hadoopnode01:50070</value>  				<- 하둡에서 제공하는 것을 50070 포트로 받을거다. (50070은 관례상 지정한 포트번호)
+    </property>
+    <property>
+        <name>dfs.secondary.http.address</name>  	<- secondary 주소
+        <value>hadoopnode01:50090</value>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>/home/jun/hdfs-data/hadoop/data/namenode</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>/home/jun/hdfs-data/hadoop/data/datanode</value>		<- 실제  파일들이 들어가는 곳
+    </property>
+</configuration>
+
+파일들을 따로 만들면 되는데 왜 한곳에다 만들었는지
+ - 알아서 잘 찾아간다.
+
+나중에 복사 붙여넣기 해도 잘 돌아간다.
+
+
+
+
+
+vi ~/.bashrc 입력
+
+export 3개 있을텐데 하나 더 추가할 것
+
+export HADDOP_HOME=/home/jun/hadoop-2.7.2
+
+
+저장하고 나와서 먹게 해주자
+
+. ~/.bashrc
+
+
+## 어제 했던 부분에서 그냥 추가해서 하면 될 듯.
+
+
+
+
+
+## 어느 위치에 있던 ~ 은 home 을 뜻함
+. ~/.bashrc
+  ~ 홈 / 밑에 .bashrc
+
+
+hadoop 안의 etc 안의 hadoop 에 있는 파일들 중
+
+[jun@hadoopnode01 ~/hadoop]$  cp etc/hadoop/mapred-site.xml.template etc/hadoop/mapred-site.xml 
+
+복사해서 하나 생성
+
+
+vi mapred-site.xml 들어가서 (대신 hadoop 디렉토리 안에서 해야함, 아니라면 vi etc/hadoop/mapred-site.xml)
+
+<configuration>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>				<- yarn 은 리소스 관리자 (필요할때 부하량에 따라 나눠쓸 수 있게 해주는 것)
+    </property>
+    <property>
+        <name>yarn.app.mapreduce.am.env</name>
+        <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+    </property>
+    <property>
+        <name>mapreduce.map.env</name>
+        <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+    </property>
+    <property>
+        <name>mapreduce.reduce.env</name>
+        <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+    </property>
+</configuration>
+
+
+저장하고 나가기
+
+vi yarn-site.xml 들어가기
+
+
+<configuration>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>			<- 셔플을 하라는 명령
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>			<- 어디서 셔플을 할거냐
+    </property>
+    <property>
+        <name>yarn.nodemanager.local-dirs</name>
+        <value>/home/jun/hdfs-data/hadoop/data/yarn/local</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.fs.state-store.uri</name>
+        <value>/home/jun/hdfs-data/hadoop/data/yarn/rmstore</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.hostname</name>
+        <value>hadoopnode01</value>
+    </property>
+    <property>
+        <name>yarn.web-proxy.address</name>
+        <value>0.0.0.0:8090</value>
+    </property>
+        <name>yarn.nodemanager.log-dirs</name>
+        <value>/home/jun/hdfs-data/hadoop/data/yarn/logs</value>
+    </property>
+</configuration>
+
+
+
+
+
+
+***********
+
+scp -r /home/jun/hdfs-data/hadoop/etc/hadoop hadoopnode02:/home/jun/hdfs-data/hadoop/etc/hadoop
+
+이 명령으로 처음에 하둡 설치를 잘 해놓으면, 다른 node에 이 코드로 같은 실행을 하게 만들어줄 수 있다.
+우리는 한대로만 사용하기 때문에 할 필요 없지만, 머신 대 머신으로 복사해서 수행할 수 있게 만들어줌
+
+***************
+
+ /home/jun/hadoop 으로 가자
+
+포맷을 먼저 해야함
+
+bin/hdfs namenode -format 
+
+처음 시작할때 포맷하기 때문에 한번 성공하면 할 필요 없음
+namenode 만 포맷하면 됨
+
+Storage directory /home/jun/hdfs-data/hadoop/data/namenode has been successfully formatted.
+이 문장 나오면 된거
+
+
+sbin/start-dfs.sh      demon 서버프로세스 를 올려주는 것
+yes 입력
+
+전부 로그인 된거 생각하고
+
+jps 입력시
+
+NameNode
+SecondaryNameNode
+DataNode
+Jps 
+
+나와야함 (순서상관없음)
+
+sbin/start-yarn.sh 입력
+
+DataNode
+ResourceManager
+Jps
+SecondaryNameNode
+NameNode
+NodeManager
+
+나와야함(순서상관없음)
+** 만약 에러가 나오거나 안나오는 경우가 있다면 대부분은 오타의 문제다.
+
+** 하둡 3.0 이상에서는 yarn 올려줄 시 프락시 서버가 자동으로 올라오지만 
+   2.0 대 버전은 수동으로 올려줘야 한다.
+
+sbin/yarn-daemon.sh start proxyserver
+
+히스토리 서버도 올려준다.
+sbin/mr-jobhistory-daemon.sh start historyserver
+
+
+**********
+ 3.0버전에서는 /bin/mapred historyserver start& 실행시켜줘야 함
+**********
+
+
+서비스 죽이는 법 (나중에) * 거꾸로 하면 됨
+
+sbin/mr-jobhistory-daemon.sh stop historyserver
+
+proxyserver <- 얘는 yarn 멈추면 자동으로 멈춤
+
+sbin/stop-yarn.sh
+
+sbin/stop-dfs.sh
+
+
+
+
+
+
+리눅스에서 Firefox 들어가서
+
+10.0.2.15  주소로 들어가면 웹 ui 로 제공하는 hadoop 을 볼 수 있음
+
+
+10.0.2.15:8088 yarn 에서 제공하는 웹페이지
+
+10.0.2.15:19888 jobhistory 내역을 볼 수 있음
+
+크롬에서 보고 싶으면 포트 포팅을 해줘야함
+
+리눅스에서 프로그램 잡다 방화벽
+
+런타임 영구적 전부 포트를 추가해준다
+
+50070
+8088
+19888
+
+추가 해줄것.
+
+VM VirtualBox 관리자로 와서 
+설정 네트워크 고급 포트포워딩 가서
+
+HDFS
+Jobhistory
+Yarn
+
+각 호스트 IP 127.0.0.1
+호스트 포트 각 주소 뒤 50070 19888 8088
+게스트 IP 10.0.2.15
+게스트 포트 50070 19888 8088
+
+확인
+
+이렇게 하면 크롬에서
+localhost:숫자
+
+로 확인 가능하다 ( 자주 확인하게 될거니 북마크 해놓자 )
+
+*************
+이걸로 세팅은 끝
+************
+
+
+
+이제 샘플 프로그램을 돌려보자
+
+그전에 hadoop 명령어를 공부해보자
+
+bin/hdfs dfs -mkdir /user
+bin/hdfs dfs -mkdir /user/jun
+
+기본 베이스 위치가 되는 디폴트 디렉토리를 만들어주었다.
+
+bin/hdfs dfs -ls  입력시
+
+아무것도 안보이는데, 
+기본 디폴트 디렉토리 안을 보여주기 때문에
+아무것도 안보이는 것. 
+
+
+
+하둡에서 디렉토리 하나 만들어보자
+bin/hdfs dfs -mkdir word-input
+bin/hdfs dfs -mls
+
+bin/hdfs dfs -put etc/hadoop/hadoop-env.sh word-input
+우리가 만들어둔 복사본에 하나만 들어가게 된다.
+** 우리가 1개만 쓰겠다고 전에 지정해놨기 때문에 그렇고
+만약 3개를 쓴다고 해놓는다면, 3개에 나눠져서 복사해서 들어감
+
+
+
+
+하둡 내에 파일까지 지우는건
+bin/hdfs dfs -rm -r 해당파일명
+
+[jun@hadoopnode01 ~/hadoop/share/hadoop/mapreduce]$  여기에
+
+-rw-r--r--. 1 jun jun  513088  1월 26  2016 hadoop-mapreduce-client-app-2.7.2.jar
+-rw-r--r--. 1 jun jun  751718  1월 26  2016 hadoop-mapreduce-client-common-2.7.2.jar
+-rw-r--r--. 1 jun jun 1531757  1월 26  2016 hadoop-mapreduce-client-core-2.7.2.jar
+-rw-r--r--. 1 jun jun  163774  1월 26  2016 hadoop-mapreduce-client-hs-2.7.2.jar
+-rw-r--r--. 1 jun jun    4136  1월 26  2016 hadoop-mapreduce-client-hs-plugins-2.7.2.jar
+-rw-r--r--. 1 jun jun 1534188  1월 26  2016 hadoop-mapreduce-client-jobclient-2.7.2-tests.jar
+-rw-r--r--. 1 jun jun   37638  1월 26  2016 hadoop-mapreduce-client-jobclient-2.7.2.jar
+-rw-r--r--. 1 jun jun   47854  1월 26  2016 hadoop-mapreduce-client-shuffle-2.7.2.jar
+-rw-r--r--. 1 jun jun  273436  1월 26  2016 hadoop-mapreduce-examples-2.7.2.jar
+drwxr-xr-x. 2 jun jun    4096  1월 26  2016 lib
+drwxr-xr-x. 2 jun jun      30  1월 26  2016 lib-examples
+drwxr-xr-x. 2 jun jun    4096  1월 26  2016 sources
+
+hadoop-mapreduce-examples-2.7.2.jar
+얘한테
+wordcount 기능이 있으니 사용해보자 
+
+bin/yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount word-input word-output
+이런식으로 사용 가능
+
+오류 발생시  vi ~/.bashrc 로 들어가서
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export PATH=$PATH:JAVA_HOME/bin:$HADOOP_COMMON_LIB_NATIVE_DIR
+추가
+
+
+bin/hdfs dfs -ls 
+
+확인해보면 word-input 과 word-output 두개의 파일이 존재하게 되는데
+
+
+bin/hdfs dfs -cat word-output/part-r-00000
+이걸로 word-output 을 cat 으로 보면 count 된 파일들을 볼 수 있다.
+
+

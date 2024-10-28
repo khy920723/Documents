@@ -1,0 +1,15 @@
+video_id, st
+title, st
+publishedAt, st
+channelId, st
+channelTitle, st
+categoryId, int
+trending_date, st
+tags, st
+view_count, int
+likes, int
+dislikes, int
+comment_count, int
+thumbnail_link, st
+comments_disabled, st
+ratings_disabled st
