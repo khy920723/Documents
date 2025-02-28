@@ -51,6 +51,6 @@ lcg = LCG(seed=1234)
 print(lcg.random())  # 0.191482... (0~1 사이의 난수)
 print(lcg.random())  # 0.722582...
 ```
-	- 
+	-  Testting for auto Pull/Push setting
 1. True Random 생성 방법 
 2. 보안에서의 블록체인과 Pseudo Random의 차이
