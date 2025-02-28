@@ -28,13 +28,12 @@
 - 대표적인 방식으로 LCG(Linear Congruential Generator, 선형 합동 생성기)와 MT19937(메르센 트위터), CSPRNG(Cryptographically Secure PRNG, 암호학적 보안 난수 생성기)가 존재
 	- **1. LCG (Linear Congruential Generator, 선형 합동 생성기)**
 		- 가장 오래되고 간단한 난수 생성 알고리즘
-		- ![[Pasted image 20250220023944.png]]
 		- 특징:
 			- 1. 빠르고 간단함
 			- 주기가 짧아 일정 패턴이 생길 가능성이 있음
 			- 현대 보안 시스템에서는 사용되지 않음
 		- Python 코드 예제
-``` python
+		  ``` python
 class LCG:
     def __init__(self, seed=42, a=1664525, c=1013904223, m=2**32):
         self.state = seed
@@ -51,6 +50,21 @@ lcg = LCG(seed=1234)
 print(lcg.random())  # 0.191482... (0~1 사이의 난수)
 print(lcg.random())  # 0.722582...
 ```
-	-  Testting for auto Pull/Push setting
+	-  **2. 메르센 트위스터 (MT19937)**
+		- LCG보다 고품질의 의사 난수를 생성하는 알고리즘으로, 대부분의 프로그래밍 언어에서 기본 난수 생성기로 사용
+		- 특징:
+			- 주기가 길고 품질이 높아 일반적인 용도에 적합
+			- 암호학적으로 안전하지는 않음
+			- Python의 random 모듈은 메르센 트위스터를 사용함
+		- Python 코드 예제
+```python
+import random
+
+random.seed(42)  # 시드 값 설정
+print(random.random())  # 0.6394267984578837
+print(random.random())  # 0.025010755222666936
+```
+
+
 1. True Random 생성 방법 
 2. 보안에서의 블록체인과 Pseudo Random의 차이
