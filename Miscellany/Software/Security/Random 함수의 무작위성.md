@@ -32,8 +32,19 @@
 			- 1. 빠르고 간단함
 			- 주기가 짧아 일정 패턴이 생길 가능성이 있음
 			- 현대 보안 시스템에서는 사용되지 않음
-		- Python 코드 예제
-		  ``` python
+	- **2. 메르센 트위스터 (MT19937)**
+		- LCG보다 고품질의 의사 난수를 생성하는 알고리즘으로, 대부분의 프로그래밍 언어에서 기본 난수 생성기로 사용
+			- 특징:
+				- 주기가 길고 품질이 높아 일반적인 용도에 적합
+				- 암호학적으로 안전하지는 않음
+				- Python의 random 모듈은 메르센 트위스터를 사용함
+	- **3. 암호학적 안전 난수 생성기 (CSPRNG, Cryptographically Secure PRNG)**
+		- 암호학적으로 안전한 난수 생성
+		- 특징:
+			- 보안이 중요한 환경에서는 secrets 모듈(CSPRNG)을 사용하고, 일반적인 난수 생성에는 random()을 사용
+			- 예측이 어렵고, 보안 키, 인증 코드 등에 사용됨
+```python
+// LCG Python example code
 class LCG:
     def __init__(self, seed=42, a=1664525, c=1013904223, m=2**32):
         self.state = seed
@@ -49,22 +60,41 @@ class LCG:
 lcg = LCG(seed=1234)
 print(lcg.random())  # 0.191482... (0~1 사이의 난수)
 print(lcg.random())  # 0.722582...
+
+
+// 메르센 트위스터 Python example code
+class LCG:
+    def __init__(self, seed=42, a=1664525, c=1013904223, m=2**32):
+        self.state = seed
+        self.a = a
+        self.c = c
+        self.m = m
+
+    def random(self):
+        self.state = (self.a * self.state + self.c) % self.m
+        return self.state / self.m  # 0과 1 사이의 난수 반환
+
+# LCG 난수 생성기 사용 예시
+lcg = LCG(seed=1234)
+print(lcg.random())  # 0.191482... (0~1 사이의 난수)
+print(lcg.random())  # 0.722582...
+
+
+// CSPRNG Python example code
+import secrets
+
+print(secrets.token_hex(16))  # 32자리(16바이트) 랜덤 문자열 (보안용 토큰 생성)
 ```
-	-  **2. 메르센 트위스터 (MT19937)**
-		- LCG보다 고품질의 의사 난수를 생성하는 알고리즘으로, 대부분의 프로그래밍 언어에서 기본 난수 생성기로 사용
-		- 특징:
-			- 주기가 길고 품질이 높아 일반적인 용도에 적합
-			- 암호학적으로 안전하지는 않음
-			- Python의 random 모듈은 메르센 트위스터를 사용함
-		- Python 코드 예제
-```python
-import random
-
-random.seed(42)  # 시드 값 설정
-print(random.random())  # 0.6394267984578837
-print(random.random())  # 0.025010755222666936
-```
-
-
+- 의사 난수 생성기로 만들어진 결과값이 예측될 확률
+	- 시드(Seed) 값이 노출될 시, PRNG의 모든 출력이 100% 예측 가능
+	- 시드 값이 노출 안 됐을 시, 주기가 짧거나 알고리즘이 약하면 일부 또는 전체가 예측 가능
+	- PRNG의 내부 상태(Seed, State)가 크고 복잡할 수록 예측이 어려워짐
+	- 각 의사 난수 생성기의 예측 확률
+		- **1. LCG**
+			- 출력값이 몇 개만 주어져도 전체 패턴을 예측할 확률 100%
+			- LCG 방식에서 몇 개의 난수 출력값을 알고 있다면, 수식을 역으로 풀어 곱셈 계수(a), 덧셈 계수(c), 나눗셈 계수(m), 시드(seed)들을 역추적 가능
+		- **2. 메르센 트위스터**
+			- 주기가 길고 품질이 뛰어나지만, 완전히 예측 불가능하지 않ㅇ
 1. True Random 생성 방법 
 2. 보안에서의 블록체인과 Pseudo Random의 차이
+
