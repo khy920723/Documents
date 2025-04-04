@@ -1,4 +1,5 @@
-# 배터리 충전 제한
+# macOS setting
+## 배터리 충전 알림 단축어
 ---
 - .plist
 ```xml
