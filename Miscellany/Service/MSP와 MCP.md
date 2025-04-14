@@ -36,8 +36,8 @@
 		- 서비스 가용성, 응답 시간 등에 대한 계약 기준
 - 자동화/DevOps
 	- IaC(Terraform 등), CI/CD 파이프라인 운영, 클라우드 자동화 구성
-	- IaC (Infrastructure as Code)
-		- 코드 기반 인프라 구성
+		- IaC (Infrastructure as Code)
+			- 코드 기반 인프라 구성
 ### 4. MSP의 중요성
 - 시장 환경 변화
 	- 클라우드 전환 가속화
@@ -148,6 +148,8 @@
 	- 클라우드 환경 전반에 집중 초점
 	- 퍼블릭/멀티/하이브리드 클라우드 중심 대상
 	- 클라우드 아치텍쳐 설계, 자동화, FinOps, DevSecOps 등 기능
+		- DevSecOps
+			- 보안을 내재화한 DevOps 운영
 		- FinOps
 			- 클라우드 비용 최적화 전략
 	- AWS, Azure, GCP 등 클라우드 기술 특화 기술 스택
@@ -168,6 +170,7 @@
 - 보안 운영
 	- DevSecOps
 	- CSPM, CWPP, IAM, 키 관리, 규제 준수 등
+		- CSPM (Cloud Security Posture Management)
 - 지속적인 운영 관리
 	- 연중무휴 장애 대응, 성능 모니터링, 고객 대응
 - 기술 지원
