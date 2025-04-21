@@ -1,7 +1,28 @@
-# macOS setting
-## 배터리 충전 알림 단축어
----
-- .plist
+# MacOS 편의성 세팅 및 루틴 생성
+## 1. 편의성 세팅
+### 맥북을 열거나 전원 연결했을 때 자동 시작 관련 세팅
+```
+1. macOS Sequoia 이상을 사용하고 있는지 확인 
+2. 응용 프로그램 -> 유틸리티 -> 터미널 
+3. 터미널에서 아래 명령 중 하나를 입력하고 Return 누르기 
+
+- 맥북을 열거나 전원 연결했을때 시작되지 않게 하기 sudo nvram BootPreference=%00 
+
+- 맥북을 열때만 시작되지 않게 하기 
+- sudo nvram BootPreference=%01 
+
+- 전원에 연결할 때만 시작되지 않게 하기 
+- sudo nvram BootPreference=%02 
+
+2. 메시지 표시되면 관리자 비밀번호 입력 후, Return 누르기 
+
+*이전 명령 실행 취소 및 맥북 열거나 전원 연결했을 때 자동 시작 
+- sudo nvram -d BootPreference
+```
+
+## 2. 루틴
+### 퍼센티지별 배터리 충전량 알림 루틴 코드
+- .plist 생성 및 코드
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">  
@@ -22,7 +43,7 @@
 </plist>
 ```
 
-- .scpt
+- .scpt 생성 및 코드 (automator.app)
 ``` applescript
 # custom code
 
