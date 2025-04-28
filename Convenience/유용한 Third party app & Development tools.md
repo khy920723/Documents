@@ -10,8 +10,10 @@
 - InteliJ Ultimate: IDE
 - Fork: 형상관리(git)
 - DBeaver: 데이터베이스 매니징
+- FileZilla: FTP 전용
+- Termius: 멀티 SSH 전용
 
-## 서드 파티 앱 (Third party for Developement & Operation)
+## 일반 (General)
 ---
 - Homebrew: MacOS(or Linux)용 터미널 패키지 매니저  
 - iTerm2: 사용자 편의를 위한 터미널
