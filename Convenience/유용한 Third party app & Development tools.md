@@ -20,7 +20,7 @@
 
 ## 일반 (General)
 ---
-- Homebrew: MacOS(or Linux)용 터미널 패키지 매니저  
+- Homebrew: MacOS용 터미널 패키지 매니저  
 - iTerm2: 사용자 편의를 위한 터미널
 - Oh My Zsh: 사용자 편의를 위한 터미널 세팅
 - zsh-syntax-highlighting: 사용자 편의를 위한 터미널 세팅
