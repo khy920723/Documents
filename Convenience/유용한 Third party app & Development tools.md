@@ -30,7 +30,11 @@
 - AppCleaner: 연관 찌꺼기 데이터 포함 삭제
 - IINA: 음성 및 영상 플레이어
 - Obsidian: 마크다운 에디터 (유사: Joplin)
-
+- Keka: 압축/해제 확장
+- Stats: 하드웨어 리소스 확인 (유사: istat menu)
+- BlackHole 2ch: 기본 화면 녹화를 위한 가상 음성 출력 채널
+- VMware fusion: ARM 아키텍쳐 윈도우 가상머신
+- 
 ## WindowsOS
 ### 일반 (General)
 - Mac fan cotrol: 하드웨어 온도 측정 및 팬 속도 사용자 맞춤 설정 (현재 유료)
