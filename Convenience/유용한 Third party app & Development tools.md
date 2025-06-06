@@ -5,14 +5,14 @@
 - Pycharm Ultimate: IDE
 - CLion: IDE
 - Postman: 백엔드 API 테스팅
-- Fork: 형상관리(git)
+- Fork: git 형상관리
 - DBeaver: 데이터베이스 매니징
 ### 운영 (Operation)
 - InteliJ Ultimate: IDE
 - Pycharm Ultimate: IDE
 - CLion: IDE
 - Postman: 백엔드 API 테스팅
-- Fork: 형상관리(git)
+- Fork: git 형상관리
 - DBeaver: 데이터베이스 매니징
 - FileZilla: FTP 전용
 - Termius: 멀티 SSH 전용
