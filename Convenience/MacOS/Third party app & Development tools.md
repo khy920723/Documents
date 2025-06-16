@@ -1,4 +1,4 @@
-# 유용한 Third party app & Development tools
+# Third party app & Development tools
 ## MacOS
 ### 개발 (Developement)
 - InteliJ Ultimate: IDE
@@ -34,7 +34,8 @@
 - Stats: 하드웨어 리소스 확인 (유사: istat menu)
 - BlackHole 2ch: 기본 화면 녹화를 위한 가상 음성 출력 채널
 - VMware fusion: ARM 아키텍쳐 윈도우 가상머신
-- 
+- Folder hub: 노치 영역 활용 폴더 앱
+- Jolt caffein: 화면 보호기 및 절전 모드 강제 예외 시간 설정
 ## WindowsOS
 ### 일반 (General)
 - Mac fan cotrol: 하드웨어 온도 측정 및 팬 속도 사용자 맞춤 설정 (현재 유료)
