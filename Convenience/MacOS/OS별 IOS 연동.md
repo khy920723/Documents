@@ -1,0 +1,31 @@
+# OS별 IOS 연동
+## MacOS-IOS
+### 시스템 백업 동기화 시 맥북의 아이폰 백업 위치(유선)
+- '/Users/mac/Library/Application Support/MobileSync/Backup'
+	- finder -> 이동 -> option 키 -> 라이브러리
+	- 불필요 시 맥북에서 삭제해도 무방
+### 음악 동기화(유선)
+맥북-아이폰의 음악 동기화는 macOS catalina 버전 이후 itunes에서 Music(노래)앱으로 변경 됨.
+- 1. 맥북의 Music앱에 음악 추가
+	- 맥북의 Music 앱의 '플레이리스트'에 새로운 재생목록 생성
+		- 아이폰과의 동기화 파일들을 구분하기 위함
+- 2. 해당 재생목록에 drag&drop으로 동기화 할 파일 추가
+	- 추가된 파일들은 이후 삭제해도 무방
+- 3. 아이폰의 '음악' 탭에서 동기화
+	- 맥북-아이폰 유선 연결
+- 4. Finder의 위치에서 iphone 선택
+	- 초기에 iphone의 비밀번호 요구
+- 5. 음악 탭에서 동기화 할 맥북의 재생목록 선택 및 동기화 진행
+	- 동기화를 위해 초반 아이폰 백업이 자동 실행 됨
+	- 자동 백업은 현재 옵션에서 비활성화 불가능
+	- 동기화 기준 우선 순위는 MacOS
+## AOS(Samsung)-IOS
+### 다운로드된 음성파일 아이폰의 음성메모 추가
+### 음성파일 외부 다운로드 시 아이폰 폴더 위치
+- 파일 앱 -> 나의 iphone -> 마이그레이션 카테고리 이름의 폴더
+	- Apple Switch 앱을 통한 데이터 마이그레이션 작업 배경
+	- 통화 및 녹음 기록, 음악 파일들은 'iphone으로' 또는 '노래' 등의 폴더명으로 기록되어 있음
+## MacOS-AOS(Samsung)
+### 유선 연결 시 필수 앱
+- Android File Transfer
+	- https://github.com/whoozle/android-file-transfer-linux.git
