@@ -1,5 +1,5 @@
 # README
-## Documents for technology
+## Documents for IT technology
 
 - This is a collection of documents designed to answer technical questions in all areas of IT.
 	- It contains solutions to problems that arose during development and operation.
