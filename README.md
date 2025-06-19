@@ -14,3 +14,4 @@
 	- The opinions of experts were reconstructed and written based on videos, photos, or memories.
 	- In some cases, expert opinions were not verified for accuracy or supplemented with additional research.
 	- For generative AI, i made every effort to verify accuracy and conduct additional research.
+# 
