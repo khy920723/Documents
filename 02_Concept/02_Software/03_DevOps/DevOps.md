@@ -19,6 +19,9 @@
 | **모니터링/로깅**      | 운영 상태 실시간 추적            | Prometheus, Grafana, ELK Stack, Datadog    |
 | **컨테이너화**        | 애플리케이션 환경 이식성 확보        | Docker, Podman                             |
 | **오케스트레이션**      | 컨테이너 자동 배포/관리           | Kubernetes, ECS                            |
+> - ArgoCD
+> - GitLab CI
+> - GitHub Actions
 ## 💬 3. DevOps에 대한 종합적 평가
 
 | 관점                   | 평가                                                              |
@@ -37,6 +40,10 @@
 | **Amazon**  | 1일 수천 회 배포. 모든 배포는 자동화된 Canary + 롤백 체계 내장                |
 | **카카오**     | GitOps 기반 DevOps 체계 도입, Kubernetes + Jenkins + ArgoCD 사용 |
 | **쿠팡**      | 대규모 트래픽 대응을 위한 CI/CD + 무중단 배포 체계 구축 (k8s 중심)             |
+> - Chaos Engineering
+> - Spinnaker
+> - GitOps
+> - k8s
 ## 🧠 5. DevOps는 왜 중요한가?
 
 | 이유              | 설명                         |
