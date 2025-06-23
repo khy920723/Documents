@@ -57,19 +57,20 @@
 > - OpenVPN: 강력한 보안과 뛰어난 유연성을 가진 오픈소스 VPN 프로토콜입니다.
 > - L2TP/IPsec: L2TP 터널링과 IPsec 암호화를 결합하여 대부분의 OS에 내장된 VPN 프로토콜입니다.
 > - WireGuard: 최신 암호화와 간결한 코드로 빠른 속도를 제공하는 새로운 VPN 프로토콜입니다.
-> - 
-> 
+> - SSTP: Microsoft가 개발한 VPN 프로토콜로, SSL/TLS를 통해 방화벽 우회에 효과적입니다. 
+
+
 ---
 
 ## 🧰 5. VPN의 유형
 
-|분류 기준|유형|설명|
-|---|---|---|
-|**접속 주체**|**Remote Access VPN**|개별 사용자가 사설 네트워크에 접속|
-||**Site-to-Site VPN**|지사 간, 본사-지사 간 네트워크 연결|
-|**프로토콜 기반**|PPTP, L2TP/IPsec, OpenVPN, WireGuard 등|보안성과 성능이 각기 다름|
-|**구현 방식**|SW 기반, HW 기반 (예: Cisco ASA 등)|클라우드형도 있음 (ex. NordVPN, ExpressVPN)|
-
+| 분류 기준       | 유형                                     | 설명                                  |
+| ----------- | -------------------------------------- | ----------------------------------- |
+| **접속 주체**   | **Remote Access VPN**                  | 개별 사용자가 사설 네트워크에 접속                 |
+|             | **Site-to-Site VPN**                   | 지사 간, 본사-지사 간 네트워크 연결               |
+| **프로토콜 기반** | PPTP, L2TP/IPsec, OpenVPN, WireGuard 등 | 보안성과 성능이 각기 다름                      |
+| **구현 방식**   | SW 기반, HW 기반 (예: Cisco ASA 등)          | 클라우드형도 있음 (ex. NordVPN, ExpressVPN) |
+>- Cisco ASA: 
 ---
 
 ## 🌍 6. VPN은 어디에 사용될까?
